@@ -1,0 +1,47 @@
+<!-- https://github.com/MSFTGarageFi/mimmitkoodaa -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#HEL Event results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+
+    <h1>Results for '<%=searchTerm%>'</h1>
+    <table class="table table-bordered" id="resultsTable">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+        <tbody>
+        <%
+              for(var i=0; i < events.length; i++) { 
+          %>
+          <tr>
+              <td><%= events[i].name.fi %></td>
+              <% 
+              if(events[i].short_description != null) { 
+              %>
+                  <td><%= events[i].short_description.fi %></td>
+              <%
+              } 
+              else { 
+              %>
+                  <td>No description available</td> 
+              <%
+              }
+              %>
+              <td> <%= events[i].start_time %> </td>
+          </tr>
+          <%
+          }
+          %>
+        </tbody>
+    </table>
+
+  </body>
+</html>
